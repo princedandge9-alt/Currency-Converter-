@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<title> Currency convertor</title>
+<h1>💱 Currency Converter</h1>
+
+<style>
+    body{
+        background-color:rgb(176, 178, 168);      
+        font-family:calc();
+        border:lch(from black l c h);
+    }
+    .box{
+            background: white;
+            width: 300px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+    button{
+        background-color:rgb(0, 0, 0);
+        color:rgb(255, 255, 255);
+        border-radius:10px;
+        padding:10px;
+    }
+
+    h3 {
+        background-color: green;
+         background: rgb(34, 189, 3);
+            width: 50px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+    div{
+        background-color:rgb(255, 255, 255);
+        width: 300px;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    
+
+</style>
+
+
+<input type ="number" id="amount" placeholder="Enter amount">
+<select id="fromCurrency">
+    <option value="IND">Indian Rupee</option>
+    <option value="USA">United States Dollar</option>
+    <option value="EURO">Euro</option>
+</select>
+
+<select id="toCurrency">
+    <option value="IND">Indian Rupee</option>
+    <option value="USA">United States Dollar</option>
+    <option value="EURO">Euro</option>
+    
+</select>
+
+<button onclick="convert()">Convert </button>
+
+   <h3>Result</h3>
+<div id="result" style="color: green; font-weight: bold;"></div>
+
+
+    <script>
+        const rates = {
+            
+            "IND": 86.5,
+            "USA": 1,
+            "EURO": 0.92, 
+        };
+         function convert() {
+           let amount = Number(document.getElementById("amount").value);
+           let from = document.getElementById("fromCurrency").value;
+          let to = document.getElementById("toCurrency").value;
+
+        if (amount <= 0) {
+
+            document.getElementById("result").innerHTML = "Please enter a valid amount.";
+            return;
+        }
+
+        let USD = amount / rates[from];
+        let answer = USD * rates[to];
+        document.getElementById("result").innerHTML = "Result: " + answer.toFixed(2) + " " + to;
+        }
+    </script>
+    
+
+</body>
+</html>
